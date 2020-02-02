@@ -9,19 +9,18 @@ def index():
  
 @app.route("/add")  
 def add():  
-    return render_template("add.html")  
+    return render_template("index.html")  
  
 @app.route("/savedetails",methods = ["POST","GET"])  
 def saveDetails():  
     msg = "msg"  
     if request.method == "POST":  
         try:  
-            name = request.form["name"]  
-            email = request.form["email"]  
-            address = request.form["address"]  
-            with sqlite3.connect("employee.db") as con:  
+            name = request.form["email"]  
+            pwd = request.form["pwd"]    
+            with sqlite3.connect("login.db") as con:  
                 cur = con.cursor()  
-                cur.execute("INSERT into Employees (name, email, address) values (?,?,?)",(name,email,address))  
+                cur.execute("INSERT into login (email,pwd) values (?,?)",(name,pwd))  
                 con.commit()  
                 msg = "Employee successfully Added"  
         except:  
@@ -33,10 +32,10 @@ def saveDetails():
  
 @app.route("/view")  
 def view():  
-    con = sqlite3.connect("employee.db")  
+    con = sqlite3.connect("login.db")  
     con.row_factory = sqlite3.Row  
     cur = con.cursor()  
-    cur.execute("select * from Employees")  
+    cur.execute("select * from login ")  
     rows = cur.fetchall()  
     return render_template("view.html",rows = rows)  
  
@@ -51,7 +50,7 @@ def deleterecord():
     with sqlite3.connect("employee.db") as con:  
         try:  
             cur = con.cursor()  
-            cur.execute("delete from Employees where id = ?",id)  
+            cur.execute("delete from login where id = ?",id)  
             msg = "record successfully deleted"  
         except:  
             msg = "can't be deleted"  
