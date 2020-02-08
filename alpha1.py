@@ -11,14 +11,15 @@ def add():
 @app.route("/savedetails",methods = ["POST"])  
 def saveDetails():  
         try:  
-            name = request.form["sn"] 
+            a3 = request.form["sn"] 
             data = pd.read_excel('Book1.xlsx', sheet_name='Sheet1')
-            rslt_df = data[data['a3'] == name]
+            rslt_df = data[data['a3'] == a3]
             stocklist = list(rslt_df.values)
             return render_template('simple.html', stocklist=stocklist)
         except:  
             return "error"     
-  
+
+ 
 if __name__ == "__main__":  
     app.run(debug = True)    
 
