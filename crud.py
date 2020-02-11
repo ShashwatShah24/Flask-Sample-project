@@ -46,11 +46,13 @@ def delete():
  
 @app.route("/deleterecord",methods = ["POST"])  
 def deleterecord():  
-    id = request.form["id"]  
-    with sqlite3.connect("employee.db") as con:  
+    name1 = request.form["name1"]
+    print(name1) 
+    with sqlite3.connect("login.db") as con:  
         try:  
-            cur = con.cursor()  
-            cur.execute("delete from login where id = ?",id)  
+            cur = con.cursor() 
+            print("yoyo") 
+            cur.execute("delete from login where id = ?",name1)  
             msg = "record successfully deleted"  
         except:  
             msg = "can't be deleted"  
