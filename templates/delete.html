@@ -1,14 +1,40 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-    <title>delete record</title>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>  
-<body style="background-color:Lime; text-align: center; "> 
-<h3>Remove Employee from the list</h3>  
+<body style="background-color:lightgrey;">  
+<nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin-top: 50px;">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="/static/airtel-logo-white-text-horizontal.jpg" alt="logo" style="width:100px;">
+  </a>
   
-<form action="/deleterecord" method="post">  
+<h3>Remove Employee from the list</h3>
+</nav>
+  
+ <div class="container" style="background-color:white ; margin-top: 100px;width:400px; border-radius: 50px" > 
+  <form class="form-horizontal" action = "/deleterecord"  method="post"  >
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email" style="padding-top:15px">Employee Id: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name1" placeholder="Enter Employee Id" name="name1" required>
+      </div>
+    </div>
+  <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-3">
+        <button type="submit" class="btn btn-default float" value="Submit" style="position:center;border: 2px solid red;"> Submit</button>
+      </div>
+
+<!-- <form action="/deleterecord" method="post">  
 Employee Id <input type="text" name="name1">  
-<input type="submit" value="Submit">  
+<input type="submit" value="Submit"> -->  
 </form>  
 </body>  
 </html> 

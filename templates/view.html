@@ -9,14 +9,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>  
-<body style="background-color:Lime; text-align: center">  
+<body style="background-color:lightgrey ; text-align: center">  
+  
+<nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin-top: 50px;">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="/static/airtel-logo-white-text-horizontal.jpg" alt="logo" style="width:100px;">
+  </a>
   
 <h1>Employee Information</h1>
-
+</nav>
 <table class="table table-dark  table-hover" style="margin-top: 75px">
     <thead>
       <tr>
         <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>DOB</th>
         <th>email</th>
         <th>Password</th>
       </tr>
@@ -26,8 +35,11 @@
       
         <tr>  
             <td>{{row["id"]}}</td>  
-            <td>{{row["email"]}}</td>  
-            <td>{{row["pwd"]}}</td>  
+            <td>{{row["Name"]}}</td>  
+            <td>{{row["Age"]}}</td>  
+            <td>{{row["dob"]}}</td>
+            <td>{{row["Email"]}}</td>
+            <td>{{row["Password"]}}</td>
         </tr>  
       
     {% endfor %}  
