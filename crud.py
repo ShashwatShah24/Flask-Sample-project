@@ -2,7 +2,8 @@ from flask import *
 import sqlite3  
   
 app = Flask(__name__)  
- 
+app.secret_key = "abc"  
+
 @app.route("/")  
 def index():  
     return render_template("index.html");
@@ -23,6 +24,7 @@ def saveDetails1():
                 print("query test")  
                 while row is not None:
                 	msg = row[1] +" Welcome to airtel"
+                	session['email']=request.form['email']  
                 	print(row[1])
                 	return render_template("success.html",msg = msg)
                 else:
@@ -31,6 +33,16 @@ def saveDetails1():
         except:  
             con.rollback()  
             msg = "problem"  
+
+@app.route('/logout')  
+def logout():  
+    if 'email' in session:  
+        session.pop('email',None)
+        msg = "Thank you,Please login again!"
+        return render_template("failure.html",msg = msg)  
+    else:
+    	msg = "sorry aldready log out"
+    	return render_template("failure.html",msg = msg)   
 
 @app.route("/register")  
 def register():  
@@ -69,8 +81,12 @@ def view():
     con.row_factory = sqlite3.Row  
     cur = con.cursor()  
     cur.execute("select * from Account ")  
-    rows = cur.fetchall()  
-    return render_template("view.html",rows = rows)  
+    rows = cur.fetchall()
+    if 'email' in session:
+    	email = session['email']   
+    	return render_template("view.html",rows = rows) 
+    else:
+    	return '<p>Please login first</p>'  
  
  
 @app.route("/delete")  
